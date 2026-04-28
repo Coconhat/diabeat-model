@@ -284,14 +284,17 @@ def predict_lifestyle(data: LifestyleData):
     # 7.5 Return result (including raw scores for debugging)
     # ------------------------------------------------------------------
     return {
-        "risk_score": round(final_score, 4),
-        "risk_level": risk_label(final_score),
-        "breakdown": {
-            "raw_symptom_score": round(raw_uci_score, 4),
-            "raw_lifestyle_score": round(raw_cdc_score, 4),
-            "calibrated_symptom_score": round(calibrated_uci, 4),
-            "calibrated_lifestyle_score": round(calibrated_cdc, 4)
-        },
+    "risk_score": round(final_score, 4),
+    "risk_level": risk_label(final_score),
+    "breakdown": {
+        "symptom_score": round(calibrated_uci, 4),
+        "lifestyle_score": round(calibrated_cdc, 4),
+        "raw_symptom_score": round(raw_uci_score, 4),
+        "raw_lifestyle_score": round(raw_cdc_score, 4),
+        "calibrated_symptom_score": round(calibrated_uci, 4),
+        "calibrated_lifestyle_score": round(calibrated_cdc, 4)
+    },
+
         "probabilities": {
             "uci": {
                 "negative": round(float(uci_probs[0]), 3),
